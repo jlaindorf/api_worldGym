@@ -8,4 +8,4 @@ Route::middleware('auth:sanctum')->group(function () {
 });
 
 // rota pública
-Route::post('user',[UserController::class,'store']);
+Route::post('users',[UserController::class,'store']);
