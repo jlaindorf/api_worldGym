@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\SendWelcomeEmailToUser;
+use App\Models\Plan;
 use App\Models\User;
 use App\Traits\HttpResponses;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
@@ -26,6 +29,16 @@ class UserController extends Controller
 
         $user = User::create($data);
 
+        $email = $data['email'];
+        $name = $data['name'];
+        $plan = Plan::find($data['plan_id']);
+        $planName = $plan->description;
+
+        $userLimit = $plan->limit;
+
+
+        Mail::to($email, $name)
+        ->send(new SendWelcomeEmailToUser($name,$planName, $userLimit));
         return $user;
     } catch (\Exception $exception) {
         return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
