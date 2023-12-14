@@ -9,6 +9,6 @@ class Exercise extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name' , 'user_id', 'description'];
+    protected $fillable = ['user_id', 'description'];
 
     }
