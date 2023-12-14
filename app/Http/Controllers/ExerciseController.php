@@ -42,7 +42,7 @@ class ExerciseController extends Controller
         try {
                 $userId = $request->user()->id;
 
-                $data = Exercise::where('user_id', $userId)->get();
+                $data = Exercise::where('user_id', $userId)->orderby('description','ASC')->get();
           return  $data;
 
         } catch (\Exception $exception) {
