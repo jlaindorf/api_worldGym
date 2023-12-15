@@ -55,6 +55,10 @@ class ExerciseController extends Controller
          $exercise = Exercise::find($id);
          if(!$exercise) return $this->error('Dado Não encontrado', Response::HTTP_NOT_FOUND);
 
+         $userId = auth()->id();
+        if ($exercise->user_id !== $userId) {
+            return $this->response('Exercício cadastrado por outro usuário', Response::HTTP_FORBIDDEN);
+        }
 
          $exercise->delete();
 
