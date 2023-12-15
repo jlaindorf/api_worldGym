@@ -49,5 +49,24 @@ class ExerciseController extends Controller
             return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
+
+    public function destroy($id){
+
+         $exercise = Exercise::find($id);
+         if(!$exercise) return $this->error('Dado Não encontrado', Response::HTTP_NOT_FOUND);
+
+         $userId = auth()->id();
+        if ($exercise->user_id !== $userId) {
+            return $this->response('Exercício cadastrado por outro usuário', Response::HTTP_FORBIDDEN);
+        }
+
+         $exercise->delete();
+
+
+        return $this->response('', Response::HTTP_NO_CONTENT);
+
+
+
+    }
     }
 
