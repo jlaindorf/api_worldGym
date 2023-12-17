@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Student;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -81,4 +82,22 @@ class StudentController extends Controller
             return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
+    public function destroy($id){
+
+        $student = Student::find($id);
+        if(!$student) return $this->error('Dado Não encontrado', Response::HTTP_NOT_FOUND);
+
+        $userId = auth()->id();
+       if ($student->user_id !== $userId) {
+           return $this->response('Aluno cadastrado por outro usuário', Response::HTTP_FORBIDDEN);
+       }
+
+        $student->delete();
+
+
+       return $this->response('', Response::HTTP_NO_CONTENT);
+
+
+
+   }
 }
