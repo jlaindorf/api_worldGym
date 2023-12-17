@@ -51,6 +51,7 @@ class StudentController extends Controller
                 'students.name as student_name',
                 'students.email as student_email',
                 'students.cpf as student_cpf',
+                'students.date_birth as student_date_birth',
                 'students.contact as student_contact',
                 'students.cep as student_cep',
                 'students.street as student_street',
