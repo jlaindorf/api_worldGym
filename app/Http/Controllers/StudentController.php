@@ -23,6 +23,7 @@ class StudentController extends Controller
                 'cpf' => 'required|string|max:14|unique:users,cpf|',
                 'contact' => 'required|string|max:10',
                 'cep' => 'string',
+                'state'=>'string',
                 'street' => 'string',
                 'neighborhood' => 'string',
                 'city' => 'string',
@@ -94,5 +95,43 @@ class StudentController extends Controller
 
 
         return $this->response('', Response::HTTP_NO_CONTENT);
+    }
+
+    public function update($id, Request $request){
+
+      try{
+            $data = $request->all();
+            $request->validate([
+
+                'name' => 'string|max:255',
+                'email' => 'email|unique:students,email|max:255',
+                'date_birth' => 'string|date_format:Y-m-d',
+                'cpf' => 'string|max:14|unique:users,cpf|',
+                'contact' => 'string|max:10',
+                'cep' => 'string',
+                'state'=>'string',
+                'street' => 'string',
+                'neighborhood' => 'string',
+                'city' => 'string',
+                'number' => 'string'
+            ]);
+
+
+            $student = Student::find($id);
+            if (!$student) return $this->error('Aluno não encontrado', Response::HTTP_NOT_FOUND);
+            $userId = auth()->id();
+            if ($student->user_id !== $userId) {
+                return $this->response('Aluno cadastrado por outro usuário', Response::HTTP_FORBIDDEN);
+            }
+
+            $student->update($data);
+          return $this->response('Aluno atualizado com sucesso !', Response::HTTP_OK);
+
+      }catch (\Exception $exception) {
+            return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
+
+
+
     }
 }
