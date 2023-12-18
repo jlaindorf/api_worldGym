@@ -105,7 +105,7 @@ class StudentController extends Controller
 
                 'name' => 'string|max:255',
                 'email' => 'email|unique:students,email|max:255',
-                'date_birth' => 'string|date_format:Y-m-d',
+                'date_birth' => '|date_format:Y-m-d',
                 'cpf' => 'string|max:14|unique:users,cpf|',
                 'contact' => 'string|max:10',
                 'cep' => 'string',
