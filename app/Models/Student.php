@@ -18,8 +18,4 @@ class Student extends Model
         'cep',];
 
 
-    public function workouts()
-    {
-        return $this->hasMany(Workout::class, 'student_id');
-    }
 }
