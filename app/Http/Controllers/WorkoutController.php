@@ -21,7 +21,7 @@ class WorkoutController extends Controller
                 'weight' => 'numeric|required',
                 'break_time' => 'integer|required',
                 'day' => 'required|in:SEGUNDA,TERÇA,QUARTA,QUINTA,SEXTA,SÁBADO,DOMINGO',
-                'observations' => 'string',
+                'observations' => 'text',
                 'time' => 'integer|required'
             ]);
 
