@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Exercise;
+use App\Models\Workout;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Symfony\Component\HttpFoundation\Response;
@@ -54,6 +55,11 @@ class ExerciseController extends Controller
 
          $exercise = Exercise::find($id);
          if(!$exercise) return $this->error('Dado Não encontrado', Response::HTTP_NOT_FOUND);
+
+         $usedWorkout = Workout::where('exercise_id', $id)->first();
+         if ($usedWorkout) {
+             return $this->response('Exercício já vinculado a um ou mais treinos', Response::HTTP_CONFLICT);
+         }
 
          $userId = auth()->id();
         if ($exercise->user_id !== $userId) {
