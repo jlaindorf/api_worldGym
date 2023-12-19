@@ -130,8 +130,15 @@ class StudentController extends Controller
       }catch (\Exception $exception) {
             return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
         }
+    }
 
-
-
+    Public function show($id){
+        try{
+            $student = Student::find($id);
+            if (!$student) return $this->error('Aluno não encontrado', Response::HTTP_NOT_FOUND);
+            return $student;
+        }catch (\Exception $exception) {
+            return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
     }
 }
