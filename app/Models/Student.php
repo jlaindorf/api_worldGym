@@ -16,4 +16,10 @@ class Student extends Model
         'contact','user_id','city','street',
         'neighborhood','number','state',
         'cep',];
+
+
+    public function workouts()
+    {
+        return $this->hasMany(Workout::class, 'student_id');
+    }
 }
