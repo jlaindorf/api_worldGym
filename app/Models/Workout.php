@@ -18,4 +18,14 @@ class Workout extends Model
          'observations',
          'time'
     ];
+
+    public function student()
+    {
+        return $this->belongsTo(Student::class, 'student_id');
+    }
+    public function exercise()
+    {
+        return $this->belongsTo(Exercise::class, 'exercise_id');
+    }
 }
+

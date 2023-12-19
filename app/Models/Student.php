@@ -16,4 +16,6 @@ class Student extends Model
         'contact','user_id','city','street',
         'neighborhood','number','state',
         'cep',];
+
+
 }
