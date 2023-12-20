@@ -77,7 +77,7 @@ class WorkoutController extends Controller
         $studentId = $request->input('id');
         $student = Student::find($studentId);
 
-
+        if (!$student) return $this->error('Aluno Não encontrado', Response::HTTP_NOT_FOUND);
 
         $workouts = Workout::where('student_id', $student->id)
             ->orderBy('created_at', 'ASC')
