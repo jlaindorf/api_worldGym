@@ -37,13 +37,15 @@
         }
 </style>
 
-<head></head>
+<head>
+    <img  src="https://i.pinimg.com/originals/42/9d/63/429d631659a11a9eb666b103d811470a.jpg" alt="barra de peso" width="100">
+    <h1 class="logo">WorldGym</h1>
+</head>
 
 <body>
 
 
-    <img  src="https://i.pinimg.com/originals/42/9d/63/429d631659a11a9eb666b103d811470a.jpg" alt="barra de peso" width="100">
-    <h1 class="logo">WorldGym</h1>
+
     <h2 class="name">Treinos da semana <br>{{ $name }}</h2>
 
     @foreach ($workouts as $day => $dayWorkouts)
