@@ -1,12 +1,12 @@
-<img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="200" alt="Laravel Logo">
+<p>WORDLGYM<img src="https://img.freepik.com/fotos-gratis/halteres-no-chao-de-uma-academia-ai-generative_123827-23743.jpg" width="200" alt="Laravel Logo"></p>
 
 
-#API WORLDGYM
+# API WORLDGYM
 
 A WorldGym, uma empresa altamente respeitada no ramo de academias, expressou satisfação em relação ao protótipo do projeto front-end desenvolvido no módulo 1. Diante desse êxito, a empresa agora manifestou o interesse em dar continuidade ao projeto, solicitando a criação do back-end da aplicação, disponibilizando de uma API REST completa.
 
 ## Tecnologias Utilizadas
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Utilizei para a criação do projeto a linguagem PHP , utilizando o framework Laravel com banco de dados Postgresql e Dbeaver para conexao com o banco de dados . 
 
 ## Learning Laravel
 
