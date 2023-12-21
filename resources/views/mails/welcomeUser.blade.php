@@ -53,7 +53,7 @@
             left: 50%;
             transform: translate(-50%, -50%);
             color: rgb(225, 226, 0);
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 1); /* Adicionado sombreado */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 1);
         }
 
         img {
@@ -77,12 +77,13 @@
     </header>
     <main>
         <div class="welcome">
-            <h1>Bem-vindo à WORLDGYM {{$name}}!</h1>
+            <h1>Bem-vindo à WORLDGYM {{ $name }}!</h1>
             <img src="https://img.freepik.com/fotos-gratis/halteres-no-chao-de-uma-academia-ai-generative_123827-23743.jpg"
                 alt="academia vazia">
-            <h2>Agora você faz parte da nossa rede e tem acesso a todos os benefícios do seu plano {{$planName}}</h2>
+            <h2>Agora você faz parte da nossa rede e tem acesso a todos os benefícios do seu plano {{ $planName }}
+            </h2>
             <h3>Esperamos que faça bom uso e aproveite ao máximo nossa academia!</h3>
-            <p>Lembre-se que seu limite de cadastro de alunos é {{$userLimit > 0 ? $userLimit: 'ILIMITADO'}}!</p>
+            <p>Lembre-se que seu limite de cadastro de alunos é {{ $userLimit > 0 ? $userLimit : 'ILIMITADO' }}!</p>
         </div>
     </main>
 </body>
