@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 use Symfony\Component\HttpFoundation\Response;
 
 class StudentController extends Controller
@@ -23,7 +24,7 @@ class StudentController extends Controller
                 'cpf' => 'required|string|size:14|unique:students,cpf|regex:/^\d{3}\.\d{3}\.\d{3}-\d{2}$/',
                 'contact' => 'required|string|max:20',
                 'cep' => 'string',
-                'state'=>'string',
+                'state' => 'string',
                 'street' => 'string',
                 'neighborhood' => 'string',
                 'city' => 'string',
@@ -97,19 +98,29 @@ class StudentController extends Controller
         return $this->response('', Response::HTTP_NO_CONTENT);
     }
 
-    public function update($id, Request $request){
+    public function update($id, Request $request)
+    {
 
-      try{
+        try {
             $data = $request->all();
             $request->validate([
 
                 'name' => 'string|max:255',
-                'email' => 'email|unique:students,email|max:255',
+                'email' => [
+                    'email',
+                    Rule::unique('students', 'email')->ignore($id),
+                    'max:255',
+                ],
                 'date_birth' => '|date_format:Y-m-d',
-                'cpf' => 'string|size:14|unique:studens,cpf|regex:/^\d{3}\.\d{3}\.\d{3}-\d{2}$/',
+                'cpf' => [
+                    'string',
+                    'size:14',
+                    'regex:/^\d{3}\.\d{3}\.\d{3}-\d{2}$/',
+                    Rule::unique('students', 'cpf')->ignore($id),
+                ],
                 'contact' => 'string|max:20',
                 'cep' => 'string',
-                'state'=>'string',
+                'state' => 'string',
                 'street' => 'string',
                 'neighborhood' => 'string',
                 'city' => 'string',
@@ -124,36 +135,39 @@ class StudentController extends Controller
                 return $this->response('Aluno cadastrado por outro usuário', Response::HTTP_FORBIDDEN);
             }
 
-            $student->update($data);
-          return $this->response('Aluno atualizado com sucesso !', Response::HTTP_OK);
 
-      }catch (\Exception $exception) {
+            $student->update(array_filter($data));
+
+            return $this->response('Aluno atualizado com sucesso !', Response::HTTP_OK);
+        } catch (\Exception $exception) {
             return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
 
-    Public function show($id){
-        try{
+
+    public function show($id)
+    {
+        try {
             $student = Student::find($id);
             if (!$student) return $this->error('Aluno não encontrado', Response::HTTP_NOT_FOUND);
             return [
-                'id'=>$student->id,
-                'name'=>$student->name,
-                'email'=>$student->email,
-                'date_birth'=>$student->date_birth,
-                'cpf'=>$student->cpf,
-                'contact'=>$student->contact,
-                'address'=>[
-                     'cep'=>$student->cep,
-                     'street'=>$student->street,
-                     'state'=>$student->state,
-                     'neighborhood'=>$student->neighborhood,
-                     'city'=>$student->city,
-                     'number'=>$student->number,
+                'id' => $student->id,
+                'name' => $student->name,
+                'email' => $student->email,
+                'date_birth' => $student->date_birth,
+                'cpf' => $student->cpf,
+                'contact' => $student->contact,
+                'address' => [
+                    'cep' => $student->cep,
+                    'street' => $student->street,
+                    'state' => $student->state,
+                    'neighborhood' => $student->neighborhood,
+                    'city' => $student->city,
+                    'number' => $student->number,
                 ]
 
             ];
-        }catch (\Exception $exception) {
+        } catch (\Exception $exception) {
             return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
