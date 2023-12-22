@@ -101,9 +101,21 @@ COMPOSER| DOM PDF | BLADE | DOCKER | MAILTRAP
 
 <img src="https://github.com/jlaindorf/files/blob/main/ficha%20de%20treino.png" width="600" alt="ficha-treino">
 
+## Melhorias que poderiam ser efetuadas no projeto
+
+- Middlewares para os acessos de treinos, alunos e exercícios
+- Criar uma rota para os exerícios já executados 
+- Opção para apagar treino e usuário
+
+ 
+
+<img src = "https://avatars.githubusercontent.com/u/125938958?v=4" width="100" src="perfil-github">
+
+✨Julio L. Laindorf✨
 
 
-
+[<img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" width="50">](https://github.com/jlaindorf)
+[<img src="https://static-00.iconduck.com/assets.00/linkedin-icon-2048x2048-ya5g47j2.png" alt="linkedin" width="50">](https://www.linkedin.com/in/laindorfjulio/)
 
 
 
