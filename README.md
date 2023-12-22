@@ -3,10 +3,10 @@
 
 # API WORLDGYM
 
-A WorldGym, uma empresa altamente respeitada no ramo de academias, expressou satisfação em relação ao protótipo do projeto front-end desenvolvido no módulo 1. Diante desse êxito, a empresa agora manifestou o interesse em dar continuidade ao projeto, solicitando a criação do back-end da aplicação, disponibilizando de uma API REST completa para que os usuários tenham controle dos seus treinos e alunos .
+A WorldGym, uma empresa altamente respeitada no ramo de academias, manifestou o interesse em dar continuidade com a FITMANAGE-TECH após o projeto de front-end ,solicitando a criação do back-end da aplicação, disponibilizando de uma API REST completa para que os usuários tenham controle dos seus treinos, alunos e exercícios .
 
 ## Tecnologias Utilizadas
-Utilizei para a criação do projeto a linguagem PHP , utilizando o framework Laravel com banco de dados Postgresql e Dbeaver para conexao com o banco de dados . 
+Para a criação do projeto programamos em linguagem PHP , utilizando o framework Laravel com banco de dados Postgresql e Dbeaver para conexao com o banco de dados . 
 <div>
 <img src="https://github.com/jlaindorf/files/blob/main/download.png" width="60" alt="laravel">
 <img src="https://github.com/jlaindorf/files/blob/main/docker.png" width="60" alt="docker">
