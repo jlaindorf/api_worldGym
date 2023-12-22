@@ -1,66 +1,121 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+<img src="https://github.com/jlaindorf/files/blob/main/halteres-no-chao-de-uma-academia-ai-generative.jpg" width="600" alt="Logo">
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
 
-## About Laravel
+# API WORLDGYM
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+A WorldGym, uma empresa altamente respeitada no ramo de academias, manifestou o interesse em dar continuidade com a FITMANAGE-TECH após o projeto de front-end ,solicitando a criação do back-end da aplicação, disponibilizando de uma API REST completa para que os usuários tenham controle dos seus treinos, alunos e exercícios .
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Tecnologias Utilizadas
+Para a criação do projeto programamos em linguagem PHP , utilizando o framework Laravel com banco de dados Postgresql e Dbeaver para conexão com o banco de dados . 
+<div>
+<img src="https://github.com/jlaindorf/files/blob/main/download.png" width="60" alt="laravel">
+<img src="https://github.com/jlaindorf/files/blob/main/docker.png" width="60" alt="docker">
+<img src="https://github.com/jlaindorf/files/blob/main/dbeaver.jpg" width="60" alt="dbeaver">
+</div>
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## Ferramentas e plugins 
 
-## Learning Laravel
+COMPOSER| DOM PDF | BLADE | DOCKER | MAILTRAP
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## Relacionamento do Bancos De Dados
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+<img src="https://github.com/jlaindorf/files/blob/main/api_academia%20-%20public.png" width="800" alt="relacionamentos db">
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Como executar o projeto 
+* Clonar para sua maquina. 
+* Abrir terminal 
+  * Composer install (para baixar as dependências)
+* no arquivo .ENV configurar seu banco de dados
+* Abrir Terminal
+  * php artisan serve
+## Rotas da Aplicação 
+| Método | Rota             | Controlador/Método  | Middleware |
+|--------|------------------|---------------------|------------|
+| POST   | /users           | UserController@store | -          |
+| POST   | /login           | AuthController@store | -          |
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+| Método | Rota                             | Controlador/Método              | Middleware                   |
+|--------|----------------------------------|---------------------------------|------------------------------|
+| GET    | /dashboard                       | DashboardController@index       | auth:sanctum                 |
+| POST   | /exercises                       | ExerciseController@store        | auth:sanctum                 |
+| GET    | /exercises                       | ExerciseController@index        | auth:sanctum                 |
+| DELETE | /exercises/{id}                  | ExerciseController@destroy      | auth:sanctum                 |
+| GET    | /students/export                 | WorkoutController@showWorkout   | auth:sanctum                 |
+| POST   | /students                        | StudentController@store         | auth:sanctum, CheckStudentLimit |
+| GET    | /students                        | StudentController@index         | auth:sanctum                 |
+| DELETE | /students/{id}                   | StudentController@destroy       | auth:sanctum                 |
+| PUT    | /students/{id}                   | StudentController@update        | auth:sanctum                 |
+| GET    | /students/{id}                   | StudentController@show          | auth:sanctum                 |
+| POST   | /workouts                        | WorkoutController@store         | auth:sanctum                 |
+| GET    | /students/{id}/workouts          | WorkoutController@index         | auth:sanctum                 |
 
-### Premium Partners
+## Tratamento de exeções e responses utilizados
+| HTTP Status Code | Descrição                                         | Mensagem de Erro                               |
+|-------------------|---------------------------------------------------|-----------------------------------------------|
+| 400               | Bad Request - Requisição com dados inválidos      | { "error": "Dados da requisição inválidos" }  |
+| 401               | Unauthorized - Login inválido                     | { "error": "Credenciais de login inválidas" }|
+| 409               | Conflict - Exercício já cadastrado para o usuário  | { "error": "Exercício já cadastrado" }        |
+| 403               | Forbidden - ID do exercício não pertence ao usuário| { "error": "Acesso proibido ao exercício" }   |
+| 404               | Not Found - ID do exercício não encontrado        | { "error": "Exercício não encontrado" }       |
+| 204               | No Content - Sucesso sem conteúdo                 | Sucesso nos deletes                           |
+| 201               | Created - Requisição criou com sucesso            | Cadastros                                     |
+| 200               | OK - Requisição bem-sucedida                      | Pesquisas e listagens                         |
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
 
-## Contributing
+# Api em Funcionamento:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+* Cadastro de usuário 
 
-## Code of Conduct
+<img src="https://github.com/jlaindorf/files/blob/main/cadastro%20de%20usuario.png" width="600" alt="cadastro-usuario">
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* Email de confirmação de novo usuário 
 
-## Security Vulnerabilities
+<img src="https://github.com/jlaindorf/files/blob/main/template-email-usuario.png" width="600" alt="email-usuario">
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+* Cadastro de aluno 
 
-## License
+<img src="https://github.com/jlaindorf/files/blob/main/cadastro-aluno.png" width="600" alt="cadastro-aluno">
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+* Cadastro de exercício 
+
+<img src="https://github.com/jlaindorf/files/blob/main/cadastro-exercicio.png" width="600" alt="cadastro-exercicio">
+
+* Dashboard 
+
+<img src="https://github.com/jlaindorf/files/blob/main/dashboard.png" width="600" alt="dashboard">
+
+* Cadastro de treino
+
+<img src="https://github.com/jlaindorf/files/blob/main/cadastro-treino.png" width="600" alt="cadastro-treino">
+
+* Listagem de treino
+
+<img src="https://github.com/jlaindorf/files/blob/main/listagem-treino.png" width="600" alt="listagem-treino">
+
+* Consulta de um aluno
+
+<img src="https://github.com/jlaindorf/files/blob/main/consulta-aluno.png" width="600" alt="consulta-um-aluno">
+
+* Ficha de treino do aluno 
+
+<img src="https://github.com/jlaindorf/files/blob/main/ficha%20de%20treino.png" width="600" alt="ficha-treino">
+
+## Melhorias que poderiam ser efetuadas no projeto
+
+- Middlewares para os acessos de treinos, alunos e exercícios
+- Criar uma rota para os exerícios já executados 
+- Opção para apagar treino e usuário
+
+ 
+
+<img src = "https://avatars.githubusercontent.com/u/125938958?v=4" width="100" src="perfil-github">
+
+✨Julio L. Laindorf✨
+
+
+[<img src="https://github.githubassets.com/assets/GitHub-Mark-ea2971cee799.png" alt="GitHub" width="50">](https://github.com/jlaindorf)
+[<img src="https://static-00.iconduck.com/assets.00/linkedin-icon-2048x2048-ya5g47j2.png" alt="linkedin" width="50">](https://www.linkedin.com/in/laindorfjulio/)
+
+
+
