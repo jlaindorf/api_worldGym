@@ -1,4 +1,4 @@
-<p>WORDLGYM<img src="https://img.freepik.com/fotos-gratis/halteres-no-chao-de-uma-academia-ai-generative_123827-23743.jpg" width="200" alt="Laravel Logo"></p>
+<img src="https://github.com/jlaindorf/files/blob/main/halteres-no-chao-de-uma-academia-ai-generative.jpg" width="400" alt="Laravel Logo">
 
 
 # API WORLDGYM
