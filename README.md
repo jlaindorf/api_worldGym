@@ -50,7 +50,7 @@ COMPOSER| DOM PDF | BLADE | DOCKER | MAILTRAP
 | POST   | /workouts                        | WorkoutController@store         | auth:sanctum                 |
 | GET    | /students/{id}/workouts          | WorkoutController@index         | auth:sanctum                 |
 
-## Tratamento de exeções e responses utilizados
+## Tratamento de exceções e responses utilizados
 | HTTP Status Code | Descrição                                         | Mensagem de Erro                               |
 |-------------------|---------------------------------------------------|-----------------------------------------------|
 | 400               | Bad Request - Requisição com dados inválidos      | { "error": "Dados da requisição inválidos" }  |
