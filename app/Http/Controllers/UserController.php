@@ -12,36 +12,37 @@ use Symfony\Component\HttpFoundation\Response;
 
 class UserController extends Controller
 {
-   public function store(Request $request){
-    try {
+    public function store(Request $request)
+    {
+        try {
 
-        $data = $request->all();
+            $data = $request->all();
 
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|email|max:255|unique:users,email',
-            'cpf' => 'required|string|max:14|unique:users,cpf|',
-            'plan_id' => 'required',
-            'password' => 'required|string|min:8|max:32',
-            'date_birth' => '|required|date-format:Y-m-d',
-        ]);
-
-
-        $user = User::create($data);
-
-        $email = $data['email'];
-        $name = $data['name'];
-        $plan = Plan::find($data['plan_id']);
-        $planName = $plan->description;
-
-        $userLimit = $plan->limit;
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'email' => 'required|email|max:255|unique:users,email',
+                'cpf' => 'required|string|max:14|unique:users,cpf|',
+                'plan_id' => 'required',
+                'password' => 'required|string|min:8|max:32',
+                'date_birth' => '|required|date-format:Y-m-d',
+            ]);
 
 
-        Mail::to($email, $name)
-        ->send(new SendWelcomeEmailToUser($name,$planName, $userLimit));
-        return $user;
-    } catch (\Exception $exception) {
-        return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
+            $user = User::create($data);
+
+            $email = $data['email'];
+            $name = $data['name'];
+            $plan = Plan::find($data['plan_id']);
+            $planName = $plan->description;
+
+            $userLimit = $plan->limit;
+
+
+            Mail::to($email, $name)
+                ->send(new SendWelcomeEmailToUser($name, $planName, $userLimit));
+            return $user;
+        } catch (\Exception $exception) {
+            return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
+        }
     }
 }
-   }

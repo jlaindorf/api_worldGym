@@ -39,40 +39,37 @@ class ExerciseController extends Controller
         }
     }
 
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         try {
-                $userId = $request->user()->id;
+            $userId = $request->user()->id;
 
-                $data = Exercise::where('user_id', $userId)->orderby('description','ASC')->get();
-          return  $data;
-
+            $data = Exercise::where('user_id', $userId)->orderby('description', 'ASC')->get();
+            return  $data;
         } catch (\Exception $exception) {
             return $this->error($exception->getMessage(), Response::HTTP_BAD_REQUEST);
         }
     }
 
-    public function destroy($id){
+    public function destroy($id)
+    {
 
-         $exercise = Exercise::find($id);
-         if(!$exercise) return $this->error('Dado Não encontrado', Response::HTTP_NOT_FOUND);
+        $exercise = Exercise::find($id);
+        if (!$exercise) return $this->error('Dado Não encontrado', Response::HTTP_NOT_FOUND);
 
-         $usedWorkout = Workout::where('exercise_id', $id)->first();
-         if ($usedWorkout) {
-             return $this->response('Exercício já vinculado a um ou mais treinos', Response::HTTP_CONFLICT);
-         }
+        $usedWorkout = Workout::where('exercise_id', $id)->first();
+        if ($usedWorkout) {
+            return $this->response('Exercício já vinculado a um ou mais treinos', Response::HTTP_CONFLICT);
+        }
 
-         $userId = auth()->id();
+        $userId = auth()->id();
         if ($exercise->user_id !== $userId) {
             return $this->response('Exercício cadastrado por outro usuário', Response::HTTP_FORBIDDEN);
         }
 
-         $exercise->delete();
+        $exercise->delete();
 
 
         return $this->response('', Response::HTTP_NO_CONTENT);
-
-
-
     }
-    }
-
+}
