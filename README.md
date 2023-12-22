@@ -1,14 +1,18 @@
-<img src="https://github.com/jlaindorf/files/blob/main/halteres-no-chao-de-uma-academia-ai-generative.jpg" width="600" alt="Laravel Logo">
+<img src="https://github.com/jlaindorf/files/blob/main/halteres-no-chao-de-uma-academia-ai-generative.jpg" width="600" alt="Logo">
 
 
 # API WORLDGYM
 
-A WorldGym, uma empresa altamente respeitada no ramo de academias, expressou satisfação em relação ao protótipo do projeto front-end desenvolvido no módulo 1. Diante desse êxito, a empresa agora manifestou o interesse em dar continuidade ao projeto, solicitando a criação do back-end da aplicação, disponibilizando de uma API REST completa.
+A WorldGym, uma empresa altamente respeitada no ramo de academias, expressou satisfação em relação ao protótipo do projeto front-end desenvolvido no módulo 1. Diante desse êxito, a empresa agora manifestou o interesse em dar continuidade ao projeto, solicitando a criação do back-end da aplicação, disponibilizando de uma API REST completa para que os usuários tenham controle dos seus treinos e alunos .
 
 ## Tecnologias Utilizadas
 Utilizei para a criação do projeto a linguagem PHP , utilizando o framework Laravel com banco de dados Postgresql e Dbeaver para conexao com o banco de dados . 
+<img src="https://github.com/jlaindorf/files/blob/main/download.png" width="100" alt="laravel">
+<img src="https://github.com/jlaindorf/files/blob/main/docker.png" width="100" alt="docker">
+<img src="https://github.com/jlaindorf/files/blob/main/dbeaver.jpg" width="100" alt="dbeaver">
+## Ferramentas e plugins 
 
-## Learning Laravel
+COMPOSER| DOM PDF | BLADE | DOCKER | MAILTRAP
 
 Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
