@@ -45,6 +45,7 @@
         }
 
         h1 {
+            width: 40%;
             font-size: 42px;
             font-weight: bold;
             margin-bottom: 20px;

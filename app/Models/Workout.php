@@ -12,11 +12,11 @@ class Workout extends Model
         'student_id',
         'exercise_id',
         'repetitions',
-         'weight',
-         'break_time',
-         'day',
-         'observations',
-         'time'
+        'weight',
+        'break_time',
+        'day',
+        'observations',
+        'time'
     ];
 
     public function student()
@@ -28,4 +28,3 @@ class Workout extends Model
         return $this->belongsTo(Exercise::class, 'exercise_id');
     }
 }
-

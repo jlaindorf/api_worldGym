@@ -21,9 +21,9 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
-         'cpf',
-         'date_birth',
-         'plan_id'
+        'cpf',
+        'date_birth',
+        'plan_id'
     ];
 
     /**
@@ -46,7 +46,8 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function plan() {
+    public function plan()
+    {
         return $this->hasOne(Plan::class, 'id', 'plan_id');
     }
 }
