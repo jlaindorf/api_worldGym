@@ -1,4 +1,4 @@
-<img src="https://github.com/jlaindorf/files/blob/main/halteres-no-chao-de-uma-academia-ai-generative.jpg" width="400" alt="Laravel Logo">
+<img src="https://github.com/jlaindorf/files/blob/main/halteres-no-chao-de-uma-academia-ai-generative.jpg" width="500" alt="Laravel Logo">
 
 
 # API WORLDGYM
