@@ -7,11 +7,11 @@ A WorldGym, uma empresa altamente respeitada no ramo de academias, expressou sat
 
 ## Tecnologias Utilizadas
 Utilizei para a criação do projeto a linguagem PHP , utilizando o framework Laravel com banco de dados Postgresql e Dbeaver para conexao com o banco de dados . 
-
-<img src="https://github.com/jlaindorf/files/blob/main/download.png" width="70" alt="laravel">
-<img src="https://github.com/jlaindorf/files/blob/main/docker.png" width="70" alt="docker">
-<img src="https://github.com/jlaindorf/files/blob/main/dbeaver.jpg" width="70" alt="dbeaver">
-
+<div>
+<img src="https://github.com/jlaindorf/files/blob/main/download.png" width="30" alt="laravel">
+<img src="https://github.com/jlaindorf/files/blob/main/docker.png" width="30" alt="docker">
+<img src="https://github.com/jlaindorf/files/blob/main/dbeaver.jpg" width="30" alt="dbeaver">
+</div>
 ## Ferramentas e plugins 
 
 COMPOSER| DOM PDF | BLADE | DOCKER | MAILTRAP
