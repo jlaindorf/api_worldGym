@@ -15,7 +15,7 @@ Para a criação do projeto programamos em linguagem PHP , utilizando o framewor
 
 ## Ferramentas e plugins 
 
-COMPOSER| DOM PDF | BLADE | DOCKER | MAILTRAP
+COMPOSER | DOM PDF | BLADE | DOCKER | MAILTRAP
 
 ## Relacionamento do Bancos De Dados
 
@@ -23,12 +23,25 @@ COMPOSER| DOM PDF | BLADE | DOCKER | MAILTRAP
 
 
 ## Como executar o projeto 
-* Clonar para sua maquina. 
+
+* PHP: Download PHP
+* Composer: Instalação do Composer
+* Banco de dados Postgresq
+
+* Clonar o repositório para sua maquina. 
 * Abrir terminal 
-  * Composer install (para baixar as dependências)
-* no arquivo .ENV configurar seu banco de dados
+  * Baixar as dependências : Composer install 
+* Copie o arquivo .env.example e renomeie-o para .env para configurar seu banco de dados
+
+   <img src="https://github.com/jlaindorf/files/blob/main/Captura%20de%20tela%202023-12-26%20125046.png" width="300" alt="config-database">
+  
+* Abrir terminal 
+   * Execute as migrações do banco de dados para criar as tabelas necessárias: php artisan migrate
+   * Popule a tabela dos tipos de plano de usuário: php artisan db:seed
+
 * Abrir Terminal
-  * php artisan serve
+  * Inicie o servidor embutido do Laravel: php artisan serve
+  
 ## Rotas da Aplicação 
 | Método | Rota             | Controlador/Método  | Middleware |
 |--------|------------------|---------------------|------------|
